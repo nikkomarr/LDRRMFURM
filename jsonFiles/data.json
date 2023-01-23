@@ -2,8 +2,16 @@
     {
         "name": "Monkey Luffy",
         "email": "strawHatCap@onepiece.com",
-        "phone": "09204394059",
+        "contact": "09204394059",
         "country": "Philippines",
-        "id": 123456789
+        "id": 1
+    },
+    {
+        "name": "Roronoa Zoro",
+        "email": "strawHatSwordie@onepiece.com",
+        "contact": "09102397453",
+        "country": "Philippines",
+        "id": 2
     }
+
 ]
