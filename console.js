@@ -1,1 +1,5 @@
-console.log("test file")
+function testCommit () {
+  return "Test file"
+}
+
+console.log(testCommit)
