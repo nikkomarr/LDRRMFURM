@@ -30,11 +30,8 @@
     
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-3 d-flex justify-content-between">
-            <h5>Sample Members List</h5>
-            <div class="">
-                <a href="javascript:void(0)" class="btn btn-success"><i class="plus"></i> Add Member</a>
-            </div>
+        <div class="col-md-12 mb-3 d-flex justify-content-end">
+          <a href="javascript:void(0)" class="btn btn-success"><i class="plus"></i> Add Member</a>
         </div>
         <table class="table table-striped table-bordered">
           <thead>

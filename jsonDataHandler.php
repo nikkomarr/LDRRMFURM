@@ -1,8 +1,9 @@
 <?php 
 class JsonDataHandler{ 
+    //JSON FILE IS OUR DATA SOURCE
     private $jsonFile = "jsonFiles/data.json"; 
-     
- 
+    
+    //WE GET EACH ROW DATA FROM OUR JSON FILE
     public function getRows(){ 
         if(file_exists($this->jsonFile)){ 
             $jsonData = file_get_contents($this->jsonFile); 
@@ -19,6 +20,7 @@ class JsonDataHandler{
         return false; 
     } 
      
+    //GET SINGLE DATA BY ID
     public function getSingle($id){ 
         $jsonData = file_get_contents($this->jsonFile); 
         $data = json_decode($jsonData, true); 
@@ -28,7 +30,9 @@ class JsonDataHandler{
         $singleData = array_values($singleData)[0]; 
         return !empty($singleData)?$singleData:false; 
     } 
-     
+
+
+    //INSERT DATA INTO OUR JSON FILE 
     public function insert($newData){ 
         if(!empty($newData)){ 
             $id = time(); 
@@ -50,7 +54,38 @@ class JsonDataHandler{
             return false; 
         } 
     }
+
+    //UPDATE
+    public function update($upData, $id){ 
+        if(!empty($upData) && is_array($upData) && !empty($id)){ 
+            $jsonData = file_get_contents($this->jsonFile); 
+            $data = json_decode($jsonData, true); 
+             
+            foreach ($data as $key => $value) { 
+                if ($value['id'] == $id) { 
+                    if(isset($upData['name'])){ 
+                        $data[$key]['name'] = $upData['name']; 
+                    } 
+                    if(isset($upData['email'])){ 
+                        $data[$key]['email'] = $upData['email']; 
+                    } 
+                    if(isset($upData['phone'])){ 
+                        $data[$key]['phone'] = $upData['phone']; 
+                    } 
+                    if(isset($upData['country'])){ 
+                        $data[$key]['country'] = $upData['country']; 
+                    } 
+                } 
+            } 
+            $update = file_put_contents($this->jsonFile, json_encode($data)); 
+             
+            return $update?true:false; 
+        }else{ 
+            return false; 
+        } 
+    }
     
+    //DELETE
     public function delete($id){ 
         $jsonData = file_get_contents($this->jsonFile); 
         $data = json_decode($jsonData, true); 
